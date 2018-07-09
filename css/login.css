@@ -1,0 +1,239 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+li,
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    outline: none;
+    border: 0 none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body{
+    font: 12px/100% "Microsoft Yahei";
+    background-color: #7fc533;
+    overflow: hidden;
+}
+.box {
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -300px;
+}
+.head {
+    width: 500px;
+    height: 150px;
+    background: url('../img/chick.png') center/400px 150px no-repeat;
+}
+.main {
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* 登陆 注册字的框 */
+.main .title {
+    flex:1;
+    display: flex;
+}
+.main .title .lbox{
+    flex:1;
+}
+.main .title .rbox{
+    flex:1;
+}
+.main .title a {
+    color: black;
+    font: bold 26px "Microsoft Yahei";
+    line-height: 74px;
+}
+
+/* info大框 */
+.main .info1 {
+    flex:4;  
+    position: relative;
+    /* background-color: yellow */
+}
+
+.main .info1 .info-up input {
+    height: 50px;
+    width: 400px;
+    margin-top: 30px;    
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+/* 登陆按钮 */
+.main .info1 .info-up .moveBox{
+    width: 300px;
+    height: 50px;
+    margin:30px auto 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 30px;    
+}
+
+.main .info1 .info-up .moveBox span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.main .info1 .info-up .sign-in{
+    border-radius: 30px;
+    width: 300px;
+    background-color: yellow;
+    border-bottom: 0 none;
+    cursor: pointer;
+    margin-top:0;
+    
+}
+/* 给登陆按钮一个鼠标移动事件 */
+.main .info1 .info-up .move {
+    width: 300px;
+    height:300px;
+    background: radial-gradient(circle closest-side,#64c743,transparent);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-300px,-50%);
+}
+
+/* 记住密码和忘记密码 */
+.main .info1 .info-down input {
+    height: 12px;
+    width: 12px;
+    margin-top: 20px;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+.main .info1 .info-down label{
+    cursor: pointer;   
+}
+
+.main .info1 .info-down a {
+    margin-left: 150px;
+}
+
+.active{
+    background-color: yellow;
+}
+
+
+/* info2大框 */
+.info2 {
+    display: none;
+}
+
+.main .info2 {
+    flex:4;  
+    position: relative;
+}
+
+.main .info2 .info-up input {
+    height: 50px;
+    width: 400px;
+    margin-top: 20px;    
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+/* 注册按钮 */
+.main .info2 .info-up .moveBox{
+    width: 300px;
+    height: 50px;
+    margin:30px auto 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 30px;    
+}
+
+.main .info2 .info-up .moveBox span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+.main .info2 .info-up .sign-in{
+    border-radius: 30px;
+    width: 300px;
+    background-color: yellow;
+    border-bottom: 0 none;
+    cursor: pointer;
+    margin-top:0;
+    
+}
+/* 给登陆按钮一个鼠标移动事件 */
+.main .info2 .info-up .move {
+    width: 300px;
+    height:300px;
+    background: radial-gradient(circle closest-side,#64c743,transparent);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-300px,-50%);
+}
+
+
+
+
+/* 鸡蛋 */
+.rightbox {
+    background-color: wheat;
+    border-radius: 50% 50% 42% 42%;
+    box-shadow: -2px -2px 0px 5px white inset;
+    text-align: center;
+    
+    width: 200px;
+    height: 300px;
+    
+    position: absolute;
+    left: 50%;
+    margin-left: 300px;
+    top: 50%;
+    margin-top: -70px;
+
+    display: none;
+}
+.rightbox p:first-child{
+    padding-top: 70px;
+}
+.rightbox p{
+    padding-top: 30px;
+}
+.warning {  
+    font-size: 14px; 
+    font-weight: 400; 
+    color: sandybrown;
+    text-shadow: 0 0 3px white;  
+}  
+
+.warning.get {  
+    color: yellowgreen;  
+    font-size: 16px;     
+    font-weight: bold;     
+    text-shadow: 0 0 3px white;  
+    
+}  

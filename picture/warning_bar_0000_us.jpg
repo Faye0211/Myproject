@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+	<meta charset="utf-8">
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+
+    <link rel="shortcut icon" href="http://express.hivedata.com.cn:50000/static/favicon.ico" />
+
+	<script type="text/javascript" src="http://express.hivedata.com.cn:50000/static/js/common.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://express.hivedata.com.cn:50000/static/js/utils.js" charset="utf-8"></script>
+	<!-- 百度统计 -->
+	<!-- noted by jiangguoli -->
+    <!-- <script type="text/javascript" src="http://express.hivedata.com.cn:50000/static/js/baidustat.js" charset="utf-8"></script>  -->
+    <!-- [jQuery] -->
+    <script type="text/javascript" src="http://express.hivedata.com.cn:50000/static/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+	<!-- [bootstrap] -->
+    
+<script src="http://express.hivedata.com.cn:50000/view/navi/index/js/commonPhone.js"></script>
+<script>
+	var phoneUrl = "http://120.197.89.223/app/phoneget.do "; 
+	var isg = "201"; 
+	var city = "null"; 
+	var indexType = ""; 
+	var originalErrorCode = ""; 
+	var originalUrl = ""; 
+	var url = "http://express.hivedata.com.cn:50000" + "/news/homePageNew.do";
+	window.onload = function()
+	{
+		getPhone(phoneUrl,function(data) {
+			var param = "isg=" + isg + "&city=" + city + "&indexType=" + indexType 
+			        + "&originalErrorCode=" + originalErrorCode + "&originalUrl=" + originalUrl
+			        + "&mobile=" + data;
+			
+			  var x = document.createElement("IFRAME");
+			  x.setAttribute("src", url + "?" + param);
+			  x.setAttribute("width", "100%");
+			  x.setAttribute("onload", "setIframeHeight(this)");
+			  x.setAttribute("frameborder", "0");
+			  document.body.appendChild(x);
+			/* callNavi(url,param); */
+			/* alert(data);
+			document.getElementById('phoneId').innerHTML = data; */
+	     });	
+	}
+	
+	function setIframeHeight(iframe) 
+	{
+		if (iframe) 
+		{
+			var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+			if (iframeWin.document.body) 
+			{
+			iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+		    }
+		}
+   }
+</script>
+</head>
+<body>
+<!-- 正式环境友盟统计 -->
+<script type="text/javascript">
+   var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262571336'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1262571336' type='text/javascript'%3E%3C/script%3E"));
+   document.getElementById("cnzz_stat_icon_1262571336").style.display = "none"; 
+</script> 
+<!-- 测试环境友盟统计 -->
+<!-- <script type="text/javascript">
+  var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263399617'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1263399617' type='text/javascript'%3E%3C/script%3E"));
+  document.getElementById("cnzz_stat_icon_1263399617").style.display = "none"; 
+</script> -->
+</body>
+</html>

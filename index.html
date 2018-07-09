@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Faye美无止境</title>
+  <link rel="stylesheet" href="./bootstrap01/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/demo.css">
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+  <!-- <link rel="stylesheet" href="./css/reversal.css"> -->
+ 
+  <script src="./js/jquery-1.12.4.js"></script>
+  <script src="./bootstrap01/js/bootstrap.min.js"></script>
+  <script src="./js/unslider.min.js"></script>
+  <script src="js/imagesloaded.pkgd.min.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+ 
+  <script src="js/demo.js"></script>
+ 
+  <!-- <script src="js/slider.js"></script> -->
+  <!-- <script src="./js/reverse.js"></script> -->
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      background: #fff;
+      /* background: url('./img/B.jpg') no-repeat  ;  */
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    .banner {
+      position: relative;
+      overflow: auto;
+      text-align: center;
+    }
+
+    .banner li {
+      list-style: none;
+    }
+
+    .banner ul li {
+      float: left;
+    }
+
+    #banner {
+
+      width: 100%;
+      height: 500px;
+      /* background-color: #eee3dd; */
+    }
+
+    #banner .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+    }
+
+    #banner .dots li {
+      background-color: skyblue;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin: 0 4px;
+      text-indent: -999em;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: .4;
+      -webkit-transition: background .5s, opacity .5s;
+      -moz-transition: background .5s, opacity .5s;
+      transition: background .5s, opacity .5s;
+    }
+
+    #banner .dots li.active {
+
+      background: pink;
+      opacity: 1;
+    }
+
+    #banner .arrow {
+      position: absolute;
+      top: 200px;
+
+    }
+
+    #banner #al {
+      left: 15px;
+    }
+
+    #banner #ar {
+      right: 15px;
+    }
+
+    nav {
+      background: #f9ddd1;
+    }
+
+    .product {
+      margin-top: -100px;
+      display: flex;
+    }
+
+    .product h2 {
+      text-align: center;
+    }
+    .product li{
+      float: left;
+     padding-left: 10px;
+    }
+    .product li:first-child{
+      float: left;
+      margin-left: 30px;
+    }
+
+    .product li a {
+     /* flex:1; */
+     text-decoration:none;
+      flex-basis: 230px;
+      padding-left: 30px;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product li a p{
+      text-align: center;
+    }
+    #topApp {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      right:0px;
+      top:30px;
+      /* background: url("./img/kefu2.png") no-repeat; */
+    }
+  
+  </style>
+</head>
+
+
+<!-- 导航条 -->
+<nav class="navbar ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Faye美无止境</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">面部护肤
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">魅力彩妆</a>
+        </li>
+        <li>
+          <a href="#">沐浴美体</a>
+        </li>
+        <li>
+          <a href="#">洗护造型</a>
+        </li>
+        <li>
+          <a href="#">防晒护理</a>
+        </li>
+        <li>
+          <a href="#">礼品专区</a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="请输入您想查找的内容">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a data-toggle="modal" data-target="#register" href=""><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+        <li><a data-toggle="modal" data-target="#login" href=""><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+        <li>
+          <a href="#">注销</a>          
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">个人信息
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">我的订单</a>
+            </li>
+            <li>
+              <a href="#">我的现金券</a>
+            </li>
+            <li>
+              <a href="#">我的红包</a>
+            </li>
+            <li>
+              <a href="#">我的余额</a>
+            </li>
+            <li>
+              <a href="#">我的提现退款</a>
+            </li>
+            <li>
+              <a href="#">我的收藏</a>
+            </li>
+            <li>
+              <a href="#">我的心愿单</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href="#">会员中心</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">关于我们
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">在线客服</a>
+            </li>
+            <li>
+              <a href="#">帮助中心</a>
+            </li>
+            <li>
+              <a href="#">商务合作</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href="#">开放平台</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- 注册窗口 -->
+      <div id="register" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">注册</h1>
+                </div>
+                <div class="modal-body">
+                <form class="form-group" action="./API/register.php" method="POST">
+                            <div class="form-group">
+                                <label for="">用户名</label>
+                                <input class="form-control" name="userName" type="email" placeholder="例如:123@123.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="">密码</label>
+                                <input class="form-control" name="password" type="password" placeholder="至少6位字母或数字">
+                            </div>
+                            <div class="form-group">
+                                <label for="">再次输入密码</label>
+                                <input class="form-control" type="password" name="repassword" placeholder="至少6位字母或数字">
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary" type="submit">提交</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                            <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">已有账号？点我登录</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+     </div>  
+    <!-- 登录窗口 -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">登录</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="./API/login.php" method="POST">
+                            <div class="form-group">
+                                <label for="">用户名</label>
+                                <input class="form-control" name="userName" type="text" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="">密码</label>
+                                <input class="form-control" type="password" name="password" placeholder="">
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary" type="submit">登录</button>
+                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            </div>
+                            <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">还没有账号？点我注册</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+
+<!--轮播图部分 -->
+<div class="banner" id="banner">
+  <ul>
+    <li>
+      <img src="./img/06.jpg" alt="" width="940" height="340">
+    </li>
+    <li>
+      <img src="./img/07.jpg" alt="" width="940" height="340">
+    </li>
+    <li>
+      <img src="./img/08.jpg" alt="" width="940" height="340">
+    </li>
+    <li>
+      <img src="./img/09.jpg" alt="" width="940" height="340">
+    </li>
+    <li>
+      <img src="./img/10.jpg" alt="" width="940" height="340">
+    </li>
+    <!-- <li><img src="./img/04.jpg" alt="" width="640" height="480" ></li>
+          <li><img src="./img/05.jpg" alt="" width="640" height="480" ></li> -->
+  </ul>
+  <a href="javascript:void(0);" class="unslider-arrow04 prev">
+    <img class="arrow" id="al" src="./img/arrowl.png" alt="prev" width="20" height="35">
+  </a>
+  <a href="javascript:void(0);" class="unslider-arrow04 next">
+    <img class="arrow" id="ar" src="./img/arrowr.png" alt="next" width="20" height="37">
+  </a>
+</div>
+
+<!-- 产品展示1 -->
+<div class="loading">
+  <svg class="hidden">
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+      <title>arrow</title>
+      <polygon points="6.3,12.8 20.9,12.8 20.9,11.2 6.3,11.2 10.2,7.2 9,6 3.1,12 9,18 10.2,16.8 " />
+    </symbol>
+    <symbol id="icon-drop" viewBox="0 0 24 24">
+      <title>drop</title>
+      <path d="M12,21c-3.6,0-6.6-3-6.6-6.6C5.4,11,10.8,4,11.4,3.2C11.6,3.1,11.8,3,12,3s0.4,0.1,0.6,0.3c0.6,0.8,6.1,7.8,6.1,11.2C18.6,18.1,15.6,21,12,21zM12,4.8c-1.8,2.4-5.2,7.4-5.2,9.6c0,2.9,2.3,5.2,5.2,5.2s5.2-2.3,5.2-5.2C17.2,12.2,13.8,7.3,12,4.8z"
+      />
+      <path d="M12,18.2c-0.4,0-0.7-0.3-0.7-0.7s0.3-0.7,0.7-0.7c1.3,0,2.4-1.1,2.4-2.4c0-0.4,0.3-0.7,0.7-0.7c0.4,0,0.7,0.3,0.7,0.7C15.8,16.5,14.1,18.2,12,18.2z"
+      />
+    </symbol>
+    <svg id="icon-github" viewBox="0 0 33 33">
+      <title>github</title>
+      <path d="M16.608.455C7.614.455.32 7.748.32 16.745c0 7.197 4.667 13.302 11.14 15.456.815.15 1.112-.353 1.112-.785 0-.386-.014-1.411-.022-2.77-4.531.984-5.487-2.184-5.487-2.184-.741-1.882-1.809-2.383-1.809-2.383-1.479-1.01.112-.99.112-.99 1.635.115 2.495 1.679 2.495 1.679 1.453 2.489 3.813 1.77 4.741 1.353.148-1.052.569-1.77 1.034-2.177-3.617-.411-7.42-1.809-7.42-8.051 0-1.778.635-3.233 1.677-4.371-.168-.412-.727-2.069.16-4.311 0 0 1.367-.438 4.479 1.67a15.602 15.602 0 0 1 4.078-.549 15.62 15.62 0 0 1 4.078.549c3.11-2.108 4.475-1.67 4.475-1.67.889 2.242.33 3.899.163 4.311C26.37 12.66 27 14.115 27 15.893c0 6.258-3.809 7.635-7.437 8.038.584.503 1.105 1.497 1.105 3.017 0 2.177-.02 3.934-.02 4.468 0 .436.294.943 1.12.784 6.468-2.159 11.131-8.26 11.131-15.455 0-8.997-7.294-16.29-16.291-16.29"></path>
+    </svg>
+    <symbol id="icon-cross" viewBox="0 0 24 23">
+      <title>cross</title>
+      <path d="M23.865 3.677c.197-.383.164-.818-.008-1.18.048-.41-.06-.827-.448-1.147L22.323.457c-.636-.524-1.632-.689-2.25 0a155.348 155.348 0 0 1-8.797 9.001C9.011 7.342 6.72 5.255 4.443 3.165c-.8-.734-1.956-.503-2.458.37C1.253 3.9.659 4.374.168 5.182c-.233.386-.215.872 0 1.258 1.47 2.635 4.31 4.951 6.646 7.083-.313.28-.623.562-.942.836-3.146 2.702-5.268 4.416-1.331 7.187.053.037.107.029.161.05.076.036.148.06.232.074.026 0 .05.005.075.003.082.007.16.027.243.011 2.117-.415 4.085-2.074 5.872-3.9 1.74 1.715 3.592 3.353 5.63 4.325.485.232 1.063.097 1.436-.227.626.047 1.197-.342 1.484-.901.042-.026.07-.041.116-.07.91-.569.993-1.701.32-2.482-1.522-1.762-3.138-3.438-4.787-5.084 2.968-2.9 6.674-6.027 8.542-9.667z"
+      />
+    </symbol>
+  </svg>
+  <main>
+    <div class="content">
+      <div class="grid">
+        <a class="grid__item" href="#preview-1">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/01.jpg" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Memo">Memo</span>
+            </h3>
+            <h4 class="box__text">
+              <span class="box__text-inner">Beast</span>
+            </h4>
+            <div class="box__deco">&#10014;</div>
+            <p class="box__content">"Sometimes we go surfing when it's stormy weather"</p>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-2">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/02.png" alt="Some image" />
+            <h3 class="box__title box__title--straight box__title--bottom">
+              <span class="box__title-inner" data-hover="Gun">Gun</span>
+            </h3>
+            <h4 class="box__text box__text--bottom">
+              <span class="box__text-inner box__text-inner--rotated1">Rain</span>
+            </h4>
+            <div class="box__deco box__deco--top">&#10115;</div>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-3">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/03.jpg" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="West">West</span>
+            </h3>
+            <h4 class="box__text box__text--topcloser">
+              <span class="box__text-inner">Green</span>
+            </h4>
+            <div class="box__deco">&#10032;</div>
+          </div>
+        </a>
+        <a class="grid__item grid__item--noclick" href="#">
+          <div class="box">
+            <div class="box__shadow"></div>
+
+            <h4 class="box__text">
+              <span class="box__text-inner box__text-inner--rotated2 box__text-inner--reverse">Sponsor</span>
+            </h4>
+            <p class="box__content">
+              <strong>monday.com</strong> offers simplified planning and collaboration tools. Create customizable boards to track
+              everything your team is working on and keep all communication in one place and never lose track again.
+              <strong>Create your free account</strong>
+            </p>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-4">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/04.png" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Catch">Catch</span>
+            </h3>
+            <h4 class="box__text box__text--bottom box__text--right">
+              <span class="box__text-inner box__text-inner--rotated3">Fire</span>
+            </h4>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-5">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/05.jpg" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Lim">Lim</span>
+            </h3>
+            <h4 class="box__text box__text--bottomcloser">
+              <span class="box__text-inner">Breed</span>
+            </h4>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-6">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/06.jpg" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Hard">Hard</span>
+            </h3>
+            <h4 class="box__text">
+              <span class="box__text-inner">Fast</span>
+            </h4>
+            <p class="box__content">"Love stronger, stranger! Love stronger."</p>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-7">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/07.jpg" alt="Some image" />
+            <h3 class="box__title box__title--straight box__title--bottom">
+              <span class="box__title-inner" data-hover="Red">Red</span>
+            </h3>
+            <h4 class="box__text box__title--bottom">
+              <span class="box__text-inner box__text-inner--rotated1">Life</span>
+            </h4>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-8">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/08.png" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Jack">Jack</span>
+            </h3>
+            <h4 class="box__text box__text--bottom">
+              <span class="box__text-inner">Bust</span>
+            </h4>
+            <div class="box__deco">&#10108;</div>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-9">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/09.jpg" alt="Some image" />
+            <h3 class="box__title">
+              <span class="box__title-inner" data-hover="Wild">Wild</span>
+            </h3>
+            <h4 class="box__text box__text--bottom">
+              <span class="box__text-inner">Zack</span>
+            </h4>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-10">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/10.jpg" alt="Some image" />
+            <h3 class="box__title box__title--bottom">
+              <span class="box__title-inner" data-hover="Lost">Lost</span>
+            </h3>
+            <h4 class="box__text">
+              <span class="box__text-inner box__text-inner--rotated2">Rust</span>
+            </h4>
+            <p class="box__content">"Call it a hurricane or call it freedom, Frank"</p>
+          </div>
+        </a>
+        <a class="grid__item" href="#preview-11">
+          <div class="box">
+            <div class="box__shadow"></div>
+            <img class="box__img" src="./picture/11.png" alt="Some image" />
+            <h3 class="box__title box__title--straight box__title--left">
+              <span class="box__title-inner" data-hover="Grit">Grit</span>
+            </h3>
+            <h4 class="box__text box__text--bottom box__text--right">
+              <span class="box__text-inner box__text-inner--rotated3">Mud</span>
+            </h4>
+            <div class="box__deco box__deco--top">&#10153;</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- 产品展示2 -->
+<div class="product">
+  <!-- <h2 class="h2">商品系列</h2> -->
+  <hr>
+  <ul>
+    <li >
+      <a href="./detail.html">
+        <img src="./picture/17.png" class="img-circle img-thumbnail">
+        <p>口红</p>
+        <p>美妆系列</p>
+      </a>
+    </li>
+    <li >
+      <a href="./detail.html">
+        <img src="./picture/18.jpg" class="img-circle img-thumbnail">
+        <p>香水</p>
+        <p>香氛系列</p>
+      </a>
+    </li>
+    <li >
+      <a href="./detail.html">
+        <img src="./picture/19.png" class="img-circle img-thumbnail">
+        <p>身体皂</p>
+        <p>沐浴系列</p>
+      </a>
+    </li>
+    <li >
+      <a href="./detail.html">
+        <img src="./picture/20.png" class="img-circle img-thumbnail">
+        <p>乳液</p>
+        <p>护肤系列</p>
+      </a>
+    </li>
+    <li >
+      <a href="./detail.html">
+          <img src="./picture/23.png" class="img-circle img-thumbnail">
+          <p>乳液</p>
+          <p>护肤系列</p>
+        </a>
+      </li>
+     
+  </ul>
+
+
+</div>
+
+<!-- 产品展示3 -->
+
+<!-- 聊天机器人部分 -->
+<div class="topApp" id="topApp">
+  <a href="./robot.html" target="_blank"><img src="./img/kefu2.png" alt=""></a>
+</div>
+
+</body>
+
+</html>
+
+<script>
+  $(window).ready(function (e) {
+    var unslider04 = $('#banner').unslider({
+        dots: true
+      }),
+      data04 = unslider04.data('unslider');
+
+    $('.unslider-arrow04').click(function () {
+      var fn = this.className.split(' ')[1];
+      data04[fn]();
+    });
+
+   var xmlrequest;
+function createXMLHttpRequest(){
+      if(window.XMLHttpRequest){
+       xmlrequest=new XMLHttpRequest();
+      }
+      else if(window.ActiveXObject){
+         try{
+           xmlrequest=new ActiveXObject("Msxm12.XMLHTTP");
+         }
+         catch(e){
+            try{
+             xmlrequest=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch(e){}
+         }
+       
+      }
+}
+
+
+
+
+
+  });
+</script>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>您好，我是Faye</title>
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+
+    body{
+       background: linear-gradient(to right,pink ,skyblue);
+    }
+    .message{
+        width:85%;
+        height: 50px;
+        float: left;
+    }
+    .send{
+        width: 15%;
+        height: 50px;
+        float: right;
+        margin-top: -22px;
+    }
+     p{
+        border: 1px solid tomato;
+        text-align: center;
+        line-height: 50px;
+    }
+    </style>
+</head>
+<body>
+    <input class="message" type="text" placeholder="您好，我是Faye,请问有什么能帮助您的？">  
+    <br>  
+    <input class="send" type="button" value="聊天"> 
+</body>
+</html>
+<script>
+
+// 3.2、给按钮注册点击事件
+    document.querySelector('.send').onclick = function () {
+        // 3.3、创建自己的p标签，将自己发送的内容添加到页面上
+        var myp=document.createElement('p');
+        myp.innerHTML=document.querySelector('.message').value;
+        myp.style.backgroundColor='skyblue';
+        myp.style.color='green';
+        document.body.appendChild(myp);
+
+        // 3.4、创建异步对象
+        var ajax = new XMLHttpRequest();
+        // 3.5、响应行，使用的是post的方法，后面调用的是图灵机器人的接口，可以在图灵机器人的网页找到该api接口
+        ajax.open('post', 'http://openapi.tuling123.com/openapi/api');
+        // 3.6、响应头
+        ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // 3.7、回调函数
+        ajax.onload = function () {
+        // 3.8、获取数据，用的是JSON数据格式
+            var data = JSON.parse(ajax.responseText);
+            console.log(data);
+        // 3.9、创建机器人的语言，并生成在页面上
+            var robotP = document.createElement('p');
+            robotP.innerHTML = data.text;
+            robotP.style.backgroundColor = 'hotpink';
+            robotP.style.color = 'yellow';
+            document.body.appendChild(robotP);
+
+        // 3.10、判断是否有list（举例，问一道菜谱，内容过多未完全显示内容的，可以在后台找到list然后获取添加到页面上），非必须生成
+            for(var i=0;i<data.list.length;i++){
+                var a=document.createElement('a');
+                a.innerHTML='<img src=" '+data.list[i].icon+' " alt="">';
+                a.href=data.list[i].detailurl;
+                robotP.appendChild(a);
+            }
+        }
+        // 3.11、响应主体拼接密钥，图灵机器人注册后每个机器人都会有一个密钥，需要将key和info一起传送
+        // ajax.send('key=f30e3b04537946dbade6ff935a73c6c1&info=' + document.querySelector('.message').value);
+        ajax.send('key=28928a3c170845ab9c5e21200d334450&info=' + document.querySelector('.message').value);
+        // 28928a3c170845ab9c5e21200d334450
+    }
+</script>
